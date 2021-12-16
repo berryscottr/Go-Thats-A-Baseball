@@ -9,8 +9,7 @@ import (
 )
 
 func ImportData() {
-	fmt.Println("Importing data")
-	fmt.Println(today)
+	fmt.Println("Importing data from", today.year, "MLB season")
 	scheduleUrl := strings.Replace(scheduleUrlTemplate, "{year}", string(rune(today.year)), 1)
 	resp, err := http.Get(scheduleUrl)
 	if err != nil {
