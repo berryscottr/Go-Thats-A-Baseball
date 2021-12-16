@@ -1,5 +1,18 @@
 package gather
 
+import "time"
+
+type Today struct {
+	day   int
+	month int
+	year  int
+}
+
 var (
-	baseballReferenceURL = "https://www.baseball-reference.com/leagues/majors/2021-schedule.shtml"
+	scheduleUrlTemplate = "https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml"
+	today               = Today{
+		day:   time.Now().Day(),
+		month: int(time.Now().Month()),
+		year:  time.Now().Year(),
+	}
 )

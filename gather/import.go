@@ -5,11 +5,14 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func ImportData() {
 	fmt.Println("Importing data")
-	resp, err := http.Get("https://www.baseball-reference.com/leagues/majors/2021-schedule.shtml")
+	fmt.Println(today)
+	scheduleUrl := strings.Replace(scheduleUrlTemplate, "{year}", string(rune(today.year)), 1)
+	resp, err := http.Get(scheduleUrl)
 	if err != nil {
 		log.Fatalln(err)
 	}
